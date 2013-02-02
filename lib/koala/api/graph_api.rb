@@ -486,7 +486,7 @@ module Koala
 
         if http_status >= 400
           begin
-            response_hash = MultiJson.load(response_body)
+            response_hash = MultiJson.decode(response_body)
           rescue MultiJson::DecodeError
             response_hash = {}
           end

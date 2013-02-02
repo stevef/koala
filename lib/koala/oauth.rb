@@ -229,7 +229,7 @@ module Koala
         raise OAuthSignatureError, 'Invalid (incomplete) signature data' unless encoded_sig && encoded_envelope
 
         signature = base64_url_decode(encoded_sig).unpack("H*").first
-        envelope = MultiJson.load(base64_url_decode(encoded_envelope))
+        envelope = MultiJson.decode(base64_url_decode(encoded_envelope))
 
         raise OAuthSignatureError, "Unsupported algorithm #{envelope['algorithm']}" if envelope['algorithm'] != 'HMAC-SHA256'
 

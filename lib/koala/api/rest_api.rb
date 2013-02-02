@@ -46,7 +46,7 @@ module Koala
           # check for REST API-specific errors
           if response.status >= 400
             begin
-              response_hash = MultiJson.load(response.body)
+              response_hash = MultiJson.decode(response.body)
             rescue MultiJson::DecodeError
               response_hash = {}
             end
